@@ -44,10 +44,17 @@ export const getUserById= async (req,res) =>{
 }
 export const getAllUsers= async (req,res) =>{
     //const userId=req.params.id
-    const {name, email, age}= req.body
+   // const {name, email, age}= req.body
 
     const findUser= await prisma.user.findMany({
-        
+        include: {
+            post:{
+            select:{
+                title:true,
+                comment_count:true,
+            },
+        }  
+        },
     })
     return res.json({
         status:200,

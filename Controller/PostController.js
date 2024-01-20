@@ -2,7 +2,7 @@ import e from "express";
 import prisma from "../DB/db.config.js";
 
 export const createPost =async(req, res) =>{ //for
-    try {
+    //try {
         const {user_id, title, description} = req.body
 
     
@@ -13,11 +13,11 @@ export const createPost =async(req, res) =>{ //for
                 description:description
             }
         })
-        return res.json({status:200, data:newUser, message:"Post created successfully !"})
-    } catch (error) {
-        console.error(error)
-        return res.json({status:500, message:error})
-    }
+        return res.json({status:200, data:newPost, message:"Post created successfully !"})
+    // } catch (error) {
+    //     console.error(error)
+    //     return res.json({status:500, message:error})
+    // }
 }
 
 export const getPostById= async (req,res) =>{
@@ -36,7 +36,7 @@ export const getPostById= async (req,res) =>{
 export const fetchAllPosts= async (req,res) =>{
     //const userId=req.params.id
     const posts= await prisma.post.findMany({})
-    const {name, email, age}= req.body
+    //const {name, email, age}= req.body
     return res.json({
         status:200,
         data:posts
