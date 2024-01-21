@@ -8,6 +8,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: test
-      POSTGRES_DB: js_learnigns
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
